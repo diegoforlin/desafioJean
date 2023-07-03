@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        Letra:<br><br>
+        <input type="text" name="letra"><br><br>
+        <button>Teste</button><br><br>
+        <script>
+
+            var vogais = "aeiouAEIOU";
+
+            var input = document.querySelector("input")
+
+            function botão() {  
+                if(vogais.includes(input.value)) { 
+                    alert("É vogal")
+            } else {
+                alert("É consoante")
+            }}
+            var button = document.querySelector("button")
+            button.onclick = botão
+        </script>
+        Vogal ou consoante?<br>
+    </form>
+
+</body>
+
+</html>
