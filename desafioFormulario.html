@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Jean</title>
+</head>
+<body>
+    <h1>Formulário Jean</h1>
+    <h2>Para limpar dados, não preencha nenhum campo e clique em Enviar</h2>
+
+    <form id="formulario">
+        <input type='text' id="nome" placeholder='Digite o seu nome'/>
+        <input type='text' id="email" placeholder='Digite o seu e-mail'/>
+        <input type='text' id="telefone" placeholder='Digite o seu telefone'/>
+        <button type='submit'>Enviar</button>
+    </form>
+    
+
+    <h2>Informações Armazenadas</h2>
+    <p><strong>Nome:</strong> <span id="storedNome"></span></p>
+    <p><strong>E-mail:</strong> <span id="storedEmail"></span></p>
+    <p><strong>Telefone:</strong> <span id="storedTelefone"></span></p>
+
+    <script>
+        const formulario = document.getElementById('formulario');
+
+        formulario.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+
+            const contact = {
+                nome: nome,
+                email: email,
+                telefone: telefone
+            };
+
+            localStorage.setItem('formulario', JSON.stringify(contact));
+
+            document.getElementById('storedNome').textContent = contact.nome;
+            document.getElementById('storedEmail').textContent = contact.email;
+            document.getElementById('storedTelefone').textContent = contact.telefone;
+        });
+
+        const storedContact = localStorage.getItem('formulario');
+        if (storedContact) {
+            const parsedContact = JSON.parse(storedContact);
+            document.getElementById('storedNome').textContent = parsedContact.nome;
+            document.getElementById('storedEmail').textContent = parsedContact.email;
+            document.getElementById('storedTelefone').textContent = parsedContact.telefone;
+        }
+    </script>
+</body>
+</html>
